@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import {VitePWA} from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
@@ -31,5 +31,5 @@ export default defineConfig(() => ({
       ]
     }
   })],
-  // base: command !== 'serve' ? './pwa-geo-test' : './pwa-geo-test',
+  base: '/pwa-geo-test',
 }))
