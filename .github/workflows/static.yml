@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           name: vite-dist # Имя артефакта для загрузки
-          path: /dist # Путь к выходной папке сборки Vite проекта
+          path: dist # Путь к выходной папке сборки Vite проекта
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
