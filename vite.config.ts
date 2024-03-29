@@ -31,5 +31,5 @@ export default defineConfig(() => ({
       ]
     }
   })],
-  base: '/pwa-geo-test',
+  base: './pwa-geo-test',
 }))
