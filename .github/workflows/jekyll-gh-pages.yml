@@ -1,70 +1,31 @@
-# Sample workflow for building and deploying a static site with Vite to GitHub Pages
-name: Deploy Vite App to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the main branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches:
+      - main
 
 jobs:
-  # Build job
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v2
-      
-      # Assuming you have already set up Node.js in your project
-      - name: Install dependencies
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
         run: npm install
 
-      # Build your Vite app
-      - name: Build with Vite
+      - name: Build
         run: npm run build
 
-      # Upload the built files as artifacts
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: vite-app
-          path: dist  # Replace 'dist' with the path to your built files
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Download the built artifact
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: vite-app
-
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist  # Replace 'dist' with the folder containing your built files
+          branch: gh-pages
+          folder: ./dist
