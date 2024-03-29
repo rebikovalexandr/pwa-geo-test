@@ -1,0 +1,18 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#map {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  height: 80%;
+}
