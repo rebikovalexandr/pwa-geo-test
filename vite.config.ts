@@ -31,5 +31,5 @@ export default defineConfig(({command}) => ({
       ]
     }
   })],
-  base: command !== 'serve' ? '/' : '/',
+  base: command !== 'serve' ? '/pwa-geo-test/' : '/',
 }))
