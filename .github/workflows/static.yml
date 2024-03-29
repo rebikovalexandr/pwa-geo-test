@@ -34,13 +34,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14' # Укажите версию Node.js, если требуется
+          node-version: '20' # Укажите версию Node.js, если требуется
       - name: Install dependencies
         run: npm install # Установите зависимости проекта, если требуется
       - name: Build Vite project
         run: npm run build # Замените эту команду, если используете другой способ сборки вашего проекта
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: vite-dist # Имя артефакта для загрузки
           path: /dist # Путь к выходной папке сборки Vite проекта
