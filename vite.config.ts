@@ -7,11 +7,11 @@ export default defineConfig(({ command }) => ({
   base: command !== 'serve' ? '/pwa-geo-test/' : '/',
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    strategies: 'injectManifest',
-    filename: 'sw.js',
-    devOptions: {
-      enabled: true
-    },
+    // strategies: 'injectManifest',
+    // filename: 'sw.js',
+    // devOptions: {
+    //   enabled: true
+    // },
     includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
     manifest: {
       name: 'My Awesome App',

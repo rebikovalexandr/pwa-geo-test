@@ -21,12 +21,12 @@ function App() {
         });
 
         // Отправка координат в сервис-воркер
-        if (navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage({
-            type: "geolocation",
-            coords: { latitude, longitude },
-          });
-        }
+        // if (navigator.serviceWorker.controller) {
+        //   navigator.serviceWorker.controller.postMessage({
+        //     type: "geolocation",
+        //     coords: { latitude, longitude },
+        //   });
+        // }
       });
     } else {
       alert("Ваше устройство не поддерживает API геолокации.");
