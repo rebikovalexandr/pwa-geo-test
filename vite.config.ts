@@ -14,9 +14,9 @@ export default defineConfig(({ command }) => ({
     // },
     includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
     manifest: {
-      name: 'My Awesome App',
-      short_name: 'MyApp',
-      description: 'My Awesome App description',
+      name: 'Geo Map',
+      short_name: 'Map',
+      description: 'Geo Map',
       theme_color: '#ffffff',
       icons: [
         {
