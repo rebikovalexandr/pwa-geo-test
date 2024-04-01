@@ -9,8 +9,9 @@ function App() {
   });
 
   useEffect(() => {
+    let watchId: any = null
     if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition((position) => {
+      watchId = navigator.geolocation.watchPosition((position) => {
         // Получение координат пользователя
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -27,12 +28,21 @@ function App() {
         //     coords: { latitude, longitude },
         //   });
         // }
+      }, (err) => {
+        console.error(`ERROR(${err.code}): ${err.message}`);
+      }, {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: 0,
       });
     } else {
       alert("Ваше устройство не поддерживает API геолокации.");
     }
-  }, []);
 
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+    }
+  }, []);
   useEffect(() => {
     Notification.permission;
   }, []);
