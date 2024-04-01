@@ -31,7 +31,7 @@ function App() {
       }, (err) => {
         console.error(`ERROR(${err.code}): ${err.message}`);
       }, {
-        enableHighAccuracy: false,
+        enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0,
       });
