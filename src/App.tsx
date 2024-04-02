@@ -38,7 +38,24 @@ function App() {
 
 
   useEffect(() => {
-    Notification.permission;
+    if ('geolocation' in navigator) {
+      console.log('geolocation in navigator');
+      
+      // Проверяем, включена ли геолокация в настройках браузера
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions.query({ name: 'geolocation' }).then((permissionStatus) => {
+          console.log('state: ', permissionStatus.state);
+          
+          if (permissionStatus.state === 'denied') {
+            // Геолокация отключена пользователем
+            console.log('Геолокация отключена. Для корректной работы приложения включите геолокацию в настройках телефона.');
+          }
+        });
+      }
+    } else {
+      // Геолокация не поддерживается в этом браузере
+      console.error('Геолокация не поддерживается в этом браузере');
+    }
   }, []);
 
   return <OlMap latitude={coords.latitude} longitude={coords.longitude} />;
