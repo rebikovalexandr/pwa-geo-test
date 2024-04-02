@@ -12,7 +12,6 @@ function App() {
     let watchId: any = null
     if ("geolocation" in navigator) {
       watchId = navigator.geolocation.watchPosition((position) => {
-        // Получение координат пользователя
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
@@ -21,13 +20,6 @@ function App() {
           longitude,
         });
 
-        // Отправка координат в сервис-воркер
-        // if (navigator.serviceWorker.controller) {
-        //   navigator.serviceWorker.controller.postMessage({
-        //     type: "geolocation",
-        //     coords: { latitude, longitude },
-        //   });
-        // }
       }, (err) => {
         console.error(`ERROR(${err.code}): ${err.message}`);
       }, {
@@ -43,6 +35,8 @@ function App() {
       navigator.geolocation.clearWatch(watchId);
     }
   }, []);
+
+
   useEffect(() => {
     Notification.permission;
   }, []);
