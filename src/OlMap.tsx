@@ -1,26 +1,25 @@
-import Map from 'ol/Map';
-import { FC, useEffect, useRef } from 'react';
-import { getMap, updateMap } from './utils';
+import Map from 'ol/Map'
+import { FC, useEffect, useRef } from 'react'
+import { getMap, updateMap } from './utils'
 
-type Props = {
-  latitude: number;
-  longitude: number;
+interface Props {
+  latitude: number
+  longitude: number
+  heading: number
 }
 
-
-export const OlMap: FC<Props> = ({latitude, longitude}) => {
-  const mapRef = useRef<Map | null>(null);
+export const OlMap: FC<Props> = ({ latitude, longitude, heading }) => {
+  const mapRef = useRef<Map | null>(null)
 
   useEffect(() => {
-    if (mapRef?.current) {
-      updateMap(longitude, latitude);
+    if ((mapRef?.current) != null) {
+      updateMap(longitude, latitude, heading)
     } else {
-      mapRef.current = getMap(longitude, latitude);
+      mapRef.current = getMap(longitude, latitude)
     }
-  }, [latitude, longitude])
+  }, [heading, latitude, longitude])
 
   return (
-    <div id="map"></div>
-  );
-};
-
+    <div id='map' />
+  )
+}

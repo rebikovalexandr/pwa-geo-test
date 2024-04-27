@@ -1,13 +1,13 @@
-import { clientsClaim, skipWaiting } from 'workbox-core';
-import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
+import { clientsClaim, skipWaiting } from 'workbox-core'
+import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching'
 
-cleanupOutdatedCaches();
+cleanupOutdatedCaches()
 
-precacheAndRoute(self.__WB_MANIFEST || []);
+precacheAndRoute(self.__WB_MANIFEST || [])
 
-skipWaiting();
-clientsClaim();
+skipWaiting()
+clientsClaim()
 
 self.addEventListener('message', (event) => {
-    console.log('message', event.data.coords);
+  console.log('message', event.data.coords)
 })

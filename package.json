@@ -11,6 +11,8 @@
     "preview": "vite preview",
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg",
     "predeploy": "npm run build",
+    "standard": "npx ts-standard",
+    "standard-fix": "npx ts-standard --fix",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -29,6 +31,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "gh-pages": "^6.1.1",
+    "standard": "^17.1.0",
+    "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-pwa": "^0.19.7"
