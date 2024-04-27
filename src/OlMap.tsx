@@ -12,6 +12,8 @@ export const OlMap: FC<Props> = ({ latitude, longitude, heading }) => {
   const mapRef = useRef<Map | null>(null)
 
   useEffect(() => {
+    console.log(longitude, latitude, heading);
+    
     if ((mapRef?.current) != null) {
       updateMap(longitude, latitude, heading)
     } else {

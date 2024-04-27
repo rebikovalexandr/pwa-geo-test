@@ -13,3 +13,13 @@
   bottom: 0;
   width: 100%;
 }
+
+
+
+.btn-watch {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  border-radius: 15px;
+  z-index: 2;
+}
