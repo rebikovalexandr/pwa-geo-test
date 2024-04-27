@@ -40,27 +40,6 @@ function App () {
 
   useEffect(() => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const latitude = position.coords.latitude
-        const longitude = position.coords.longitude
-
-        setCoords({
-          latitude,
-          longitude,
-          heading: 0,
-        })
-      }, (err) => {
-        console.error(`ERROR(${err.code}): ${err.message}`)
-      }, {
-        enableHighAccuracy: true,
-      })
-    } else {
-      alert('Ваше устройство не поддерживает API геолокации.')
-    }
-  }, [])
-
-  useEffect(() => {
-    if ('geolocation' in navigator) {
       console.log('geolocation in navigator')
 
       // Проверяем, включена ли геолокация в настройках браузера
@@ -78,6 +57,21 @@ function App () {
               // Для Android и некоторых браузеров
               window.open('intent://#Intent;package=com.android.settings;scheme=android_settings;end')
             }
+          } else {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const latitude = position.coords.latitude
+              const longitude = position.coords.longitude
+      
+              setCoords({
+                latitude,
+                longitude,
+                heading: 0,
+              })
+            }, (err) => {
+              console.error(`ERROR(${err.code}): ${err.message}`)
+            }, {
+              enableHighAccuracy: true,
+            })
           }
         })
       }
