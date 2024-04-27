@@ -54,7 +54,7 @@ export const getMap = (longitude: number, latitude: number) => {
   return map
 }
 
-export const updateMap = (longitude: number, latitude: number, heading: number) => {
+export const updateMap = (longitude: number, latitude: number) => {
   const coordinates = fromLonLat([longitude, latitude])
 
   if (marker != null) {
@@ -63,6 +63,5 @@ export const updateMap = (longitude: number, latitude: number, heading: number) 
 
   if (map != null) {
     map.getView().setCenter(coordinates)
-    map.getView().setRotation(heading)
   }
 }

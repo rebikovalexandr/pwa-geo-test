@@ -7,7 +7,6 @@ function App () {
   const [coords, setCoords] = useState({
     latitude: 0,
     longitude: 0,
-    heading: 0,
   })
   const watchId = useRef<number>()
 
@@ -18,12 +17,10 @@ function App () {
       watchId.current = navigator.geolocation.watchPosition((position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        const heading = position.coords.heading || coords.heading;
 
         setCoords({
           latitude,
           longitude,
-          heading,
         });
       }, (err) => {
         console.error(`ERROR(${err.code}): ${err.message}`);
@@ -65,7 +62,6 @@ function App () {
               setCoords({
                 latitude,
                 longitude,
-                heading: 0,
               })
             }, (err) => {
               console.error(`ERROR(${err.code}): ${err.message}`)
@@ -86,7 +82,7 @@ function App () {
       <button className='btn-watch' onClick={toggleTracking}>
         {isTracking ? 'Остановить отслеживание' : 'Начать отслеживание'}
       </button>
-      <OlMap latitude={coords.latitude} longitude={coords.longitude} heading={coords.heading} />
+      <OlMap latitude={coords.latitude} longitude={coords.longitude} />
   </div>
   )
 }

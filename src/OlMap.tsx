@@ -5,21 +5,20 @@ import { getMap, updateMap } from './utils'
 interface Props {
   latitude: number
   longitude: number
-  heading: number
 }
 
-export const OlMap: FC<Props> = ({ latitude, longitude, heading }) => {
+export const OlMap: FC<Props> = ({ latitude, longitude }) => {
   const mapRef = useRef<Map | null>(null)
 
   useEffect(() => {
-    console.log(longitude, latitude, heading);
+    console.log(longitude, latitude);
     
     if ((mapRef?.current) != null) {
-      updateMap(longitude, latitude, heading)
+      updateMap(longitude, latitude)
     } else {
       mapRef.current = getMap(longitude, latitude)
     }
-  }, [heading, latitude, longitude])
+  }, [latitude, longitude])
 
   return (
     <div id='map' />
